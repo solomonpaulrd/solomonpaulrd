@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solomon's GPT 3.5 Prompt Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #F2F2F2;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: center;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        textarea {
+            width: 400px;
+            height: 100px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .answer {
+            margin-top: 20px;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solomon's GPT 3.5 Prompt Tool</h1>
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <label for="csv_file">Upload CSV File:</label>
+        <input type="file" name="csv_file" id="csv_file" accept=".csv" required><br>
+        <label for="prompt">Enter Prompt:</label>
+        <textarea name="prompt" id="prompt" required></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if error %}
+    <p class="error">Error: {{ error }}</p>
+    {% endif %}
+
+    {% if answer %}
+    <div class="answer">
+        <h2>Answer:</h2>
+        <p>{{ answer }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
